@@ -59,3 +59,7 @@ gem "font-awesome-rails"
 gem 'devise'
 
 gem 'annotate'
+
+gem 'simple_form'
+
+gem 'bootstrap-wysihtml5-rails', github: 'nerian/bootstrap-wysihtml5-rails'
