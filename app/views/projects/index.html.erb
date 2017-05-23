@@ -1,5 +1,7 @@
 <% if @displayed_projects.any? %>
-  <%= render 'carousel' %>
+
+  <%= render 'carousel', projects: @displayed_projects %>
+
   <div class="container">
     <h3 class="project-subtitle">Our Projects</h3>
 
