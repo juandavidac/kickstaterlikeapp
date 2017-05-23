@@ -8,7 +8,7 @@
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
-    <% projects.each_with_index do |project, index| do %>
+    <% projects.each_with_index do |project, index|%>
       <div class="item <%= "active" if index.zero? %>">
         <img src="<%= project.image_url %>" alt="...">
         <div class="carousel-caption">
