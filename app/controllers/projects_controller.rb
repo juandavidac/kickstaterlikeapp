@@ -5,9 +5,11 @@ class ProjectsController < ApplicationController
     @displayed_projects= Project.take(4)
     @projects= Project.all
   end
+
   def show
 
   end
+  
   def create
     @project= current_user.projects.build(project_params)
     respond_to do |format|
@@ -18,11 +20,30 @@ class ProjectsController < ApplicationController
       end
     end
   end
+
   def new
     @project= Project.new
   end
+
   def edit
 
+  end
+
+  def update
+    respond_to do |format|
+      if @project.update(project_params)
+        format.html {redirect_to @project, notice: "Project updated"}
+      else
+        form.html {redirect_to :edit}
+      end
+    end
+  end
+
+  def destroy
+    @project.destroy
+    respond_to do |format|
+      format.html {redirect_to projects_path, notice: "Project deleted"}
+    end
   end
   private
   def set_project
