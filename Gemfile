@@ -71,3 +71,5 @@ gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: '
 
 # MomentJS
 gem 'momentjs-rails'
+
+gem 'braintree'
