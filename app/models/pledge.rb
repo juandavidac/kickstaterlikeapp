@@ -6,6 +6,22 @@ class Pledge < ApplicationRecord
   validates_presence_of :name, :address, :city, :country, :postal_code, :amount, :user_id
   after_create :check_if_funded
 
+  def charge!
+    return false if self.charged? || !self.project.funded?
+    id = user.customer_id
+    if id.present? && @customer = Braintree::Customer.find(id)
+      result = Braintree::Transaction.sale(
+        :customer_id => @customer_id,
+        :amount => self.amount
+      )
+    if result.success?
+      self.charged!
+    else
+      self.void!
+    end
+  end
+
+  end
   def charged?
     status=="charged"
   end
@@ -24,7 +40,7 @@ class Pledge < ApplicationRecord
   def void!
     update(status: "void")
   end
-  
+
   private
   def generate_uuid!
     begin

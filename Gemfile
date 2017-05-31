@@ -73,3 +73,7 @@ gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: '
 gem 'momentjs-rails'
 
 gem 'braintree'
+
+gem 'delayed_job_active_record'
+
+gem 'delayed_job_web'
