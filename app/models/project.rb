@@ -19,6 +19,7 @@ class Project < ApplicationRecord
   belongs_to :user
   has_many :rewards
 
+  before_validation :start_project, :on => :create
   validates :name, :short_description, :description, :image_url, :expiration_date, :goal, presence: true
 
   def pledges
