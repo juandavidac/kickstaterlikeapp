@@ -16,7 +16,7 @@ class ProjectsController < ApplicationController
       if @project.save
         format.html {redirect_to @project, notice: "Project successfully created"}
       else
-        format.html {redirect_to :edit}
+        format.html {render :edit}
       end
     end
   end
@@ -34,7 +34,7 @@ class ProjectsController < ApplicationController
       if @project.update(project_params)
         format.html {redirect_to @project, notice: "Project updated"}
       else
-        form.html {redirect_to :edit}
+        format.html {render :edit}
       end
     end
   end
@@ -47,7 +47,7 @@ class ProjectsController < ApplicationController
   end
   private
   def set_project
-    @project = Project.find(params[:id])
+    @project = Project.friendly.find(params[:id])
   end
   def project_params
     params.require(:project).permit(:name, :short_description, :description, :goal, :image_url, :expiration_date)

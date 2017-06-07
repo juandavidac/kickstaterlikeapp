@@ -1,4 +1,8 @@
 class Pledge < ApplicationRecord
+
+  extend FriendlyId
+  friendly_id :uuid
+  
   belongs_to :users
   belongs_to :reward
 

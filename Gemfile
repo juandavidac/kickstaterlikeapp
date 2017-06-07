@@ -77,3 +77,5 @@ gem 'braintree'
 gem 'delayed_job_active_record'
 
 gem 'delayed_job_web'
+
+gem 'friendly_id', '~> 5.1.0'
