@@ -34,6 +34,15 @@ class Project < ApplicationRecord
     pledges.map(&:amount).inject(0, :+)
   end
 
+  def funding_percentage
+    backed = total_backed_amount
+    backed.zero? ? 0 : (backed/goal*100).to_f.round
+  end
+
+  def days_to_go
+    (self.expiration_date.to_date - Date.today).to_i
+  end
+
   def funded?
     status == "funded"
   end

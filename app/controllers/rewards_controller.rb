@@ -35,6 +35,7 @@ class RewardsController < ApplicationController
     @reward.destroy
     respond_to do |format|
       format.html {redirect_to projects_path(@project), notice: "Reward destroyed"}
+    end
   end
   private
   def set_project

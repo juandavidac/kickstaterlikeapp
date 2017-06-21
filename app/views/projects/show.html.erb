@@ -18,7 +18,7 @@
 	        </div>
 				<% end %>
 
-        <%= render 'stats' %>
+        <%= render 'stats', days_to_go: @days_to_go %>
 
 				<% if can? :manage, @project %>
 	        <%= link_to 'See project backers', project_pledges_path(@project), class: "btn btn-success btn-lg" %>
@@ -26,12 +26,12 @@
 	        <%= link_to 'Back this project', new_project_pledge_path(@project), class: "btn btn-success btn-lg" %>
 				<% end %>
 
-        <p class="project-time">This project will expire in 3 days.</p>
+        <p class="project-time"><%= funding_status_message @project %></p>
       </div>
 		</div>
     <div clas="row">
       <div class="col-md-8">
-        <p class="project-small-description">Project small description.</p>
+        <p class="project-small-description"><%= @project.short_description%></p>
       </div>
     </div>
 	</div>
@@ -41,7 +41,7 @@
 	<div class="row">
 		<div class="col-md-8">
 			<h3 class="project-subtitle">Rewards</h3>
-			<p><%= @project.description %></p>
+			<p><%= @project.description.html_safe %></p>
 		</div>
 		<div class="col-md-4">
 			<p><%= render @rewards %></p>
